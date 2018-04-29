@@ -21,6 +21,6 @@ public class PersonDAO extends AbstractDAO<Person> {
     }
 
     public List<Person> findAll() {
-        return list(namedQuery("com.via.rv.core.Person.findAll"));
+        return list(namedQuery("Person.findAll"));
     }
 }

@@ -59,3 +59,6 @@ To test the example application run the following commands.
 
         java -javaagent:/opt/appdynamics/java-agent/javaagent.jar -jar target/dropwizard-example-0.7.0-SNAPSHOT.jar server example.yml
 
+
+* Troubleshooting:
+   1. If it doesn't build, please check JAVA_HOME is set to the JDK root(not JRE root). It is something like C:\Program Files\Java\jdk1.8.0_172

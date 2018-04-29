@@ -3,7 +3,7 @@
 # Setup base directory and environment
 SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 BASE_DIR="$SCRIPT_DIR/.."
-source ${BASE_DIR}/batch/common_mac_os.sh
+source ${BASE_DIR}/batch/mac/common_mac_os.sh
 LOG_DIR="$BASE_DIR/log"
 cd $BASE_DIR
 
@@ -14,7 +14,7 @@ if [ ! -d "$LOG_DIR" ]; then
 fi
 
 # Stop current process
-./config/stop_mac_os.sh
+./config/mac/stop_mac_os.sh
 
 # JVM config
 JVM_CONFIGS="-Xms2G -Xmx2G -XX:NewSize=512m -XX:MaxNewSize=2048m \
@@ -30,7 +30,7 @@ log "Using config file $RV_CONFIG_FILE"
 
 log "Starting rv shop"
 nohup java -jar target/$JAR_FILE db migrate $RV_CONFIG_FILE >>log/rvdb.out 2>>log/rvdb.err &
-nohup java -cp target/$JAR_FILE com.via.rv.RvShopApplication server $RV_CONFIG_FILE >>log/rv.out 2>>log/rv.err &
+nohup java -cp target/$JAR_FILE RvShopApplication server $RV_CONFIG_FILE >>log/rv.out 2>>log/rv.err &
 
 # Test
 curl -s -k http://localhost:8082/hello-world >log/curl.out
